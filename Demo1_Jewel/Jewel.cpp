@@ -10,7 +10,6 @@ Jewel::Jewel()
 	border->setScale(0.5f);
 	border->setPosX(jewel_btn->getWidth() / 2);
 	border->setPosY(jewel_btn->getHeight() / 2);
-	//printf("\n%f, %f", jewel_btn->getPosX(), jewel_btn->getPosY());
 	jewel_btn->addChild(border);
 	border->setVisible(isSelected);
 }
@@ -30,6 +29,13 @@ void Jewel::Select()
 	}
 	// 保存信息到文件
 	Data::saveBool(L"isSelected", isSelected);
+}
+
+void Jewel::Break()
+{
+	// 创建一个缩放动画，1 秒后缩放到原始大小的 0.5 倍
+	auto scaleTo = gcnew ScaleTo(1, 0.5f);
+
 }
 
 Jewel::~Jewel()

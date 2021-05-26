@@ -8,6 +8,7 @@ int main()
 		Node::setDefaultAnchor(0.5f, 0.5f);
 
 		auto scene = gcnew Scene();
+		SceneManager::enter(scene);
 		
 		auto background = gcnew RectShape(Size(Window::getWidth(), Window::getHeight()));
 		background->setFillColor(Color::White);
@@ -16,11 +17,13 @@ int main()
 		auto jewel = gcnew Jewel();
 		jewel->setPos(Window::getWidth() / 2, Window::getHeight() / 2);
 		
+		auto btn_1 = gcnew RectShape(Size(20, 10));
+		auto scale_btn = gcnew Button(btn_1);
+		btn_1->setFillColor(Color::White);
 
 		scene->addChild(background);
 		scene->addChild(jewel);
 
-		SceneManager::enter(scene);
 
 		Game::start();
 	}
