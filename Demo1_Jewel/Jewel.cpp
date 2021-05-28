@@ -31,11 +31,31 @@ void Jewel::Select()
 	Data::saveBool(L"isSelected", isSelected);
 }
 
+void Jewel::Exchange(Jewel* jewel1, Jewel* jewel2)
+{
+	//创建右移动画
+	auto moveRight = gcnew MoveBy(0.2f, Vector2(100, 0));
+	
+	//创建左移动画
+	auto moveLeft = gcnew MoveBy(0.2f, Vector2(-100, 0));
+
+	//执行动画
+	jewel1->runAction(moveRight);
+	jewel2->runAction(moveLeft);
+}
+
+void Jewel::Fall()
+{
+	//创建一个下落动画
+	auto fallTo = gcnew MoveBy(0.2f, Vector2(0, 80));
+	this->runAction(fallTo);
+}
+
 void Jewel::Break()
 {
 	// 创建一个缩放动画，1 秒后缩放到原始大小的 0.5 倍
-	auto scaleTo = gcnew ScaleTo(1, 0.5f);
-
+	auto scaleTo = gcnew ScaleTo(0.3f, 0.0f);
+	this->runAction(scaleTo);
 }
 
 Jewel::~Jewel()

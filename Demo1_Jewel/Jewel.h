@@ -19,7 +19,7 @@ public:
 	//选择宝石动画
 	void Select();
 	//交换两个宝石的动画
-	void static Exchange(Jewel jewel1, Jewel jewel2);
+	void static Exchange(Jewel* jewel1, Jewel* jewel2);
 	//宝石下落的动画
 	void Fall();
 	//宝石消失的动画
