@@ -1,4 +1,5 @@
 #include "Jewel.h"
+#include "GameScene.h"
 
 Jewel::Jewel()
 {
@@ -21,11 +22,13 @@ void Jewel::Select()
 	{
 		isSelected = true;
 		border->setVisible(isSelected);
+		GameScene::add_selected_jewels_numbers();
 	}
 	else
 	{
 		isSelected = false;
 		border->setVisible(isSelected);
+		GameScene::minu_selected_jewels_numbers();
 	}
 	// 保存信息到文件
 	Data::saveBool(L"isSelected", isSelected);
@@ -39,9 +42,20 @@ void Jewel::Exchange(Jewel* jewel1, Jewel* jewel2)
 	//创建左移动画
 	auto moveLeft = gcnew MoveBy(0.2f, Vector2(-100, 0));
 
+
 	//执行动画
-	jewel1->runAction(moveRight);
-	jewel2->runAction(moveLeft);
+	if (jewel1->getPosX() > jewel2->getPosX())
+	{
+		jewel1->runAction(moveLeft->clone());
+		jewel2->runAction(moveRight->clone());
+	}
+	else
+	{
+		jewel1->runAction(moveRight->clone());
+		jewel2->runAction(moveLeft->clone());
+	}
+	jewel1->border->setVisible(false);
+	jewel2->border->setVisible(false);
 }
 
 void Jewel::Fall()

@@ -18,12 +18,18 @@
     <ClInclude Include="Jewel.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Jewel.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="test.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
