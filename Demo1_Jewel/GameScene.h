@@ -14,7 +14,12 @@ public:
 	static void add_selected_jewels_numbers();
 	static void init_selected_jewels_numbers();
 	static void minu_selected_jewels_numbers();
+	//vector<vector<Jewel*> >map;
+
 protected:
 	static int selected_jewels_numbers;
+	vector<vector<Jewel*> >map;
+
 };
 
+	

@@ -2,9 +2,11 @@
 #include "GameScene.h"
 #include <vector>
 using namespace std;
+
+
 int main()
 {
-	if (Game::init(L"Demo1", 1200, 900))
+	if (Game::init(L"Demo1", 1024, 640))
 	{
 		// 修改节点默认中心点，便于让图片居中显示
 		Node::setDefaultAnchor(0.5f, 0.5f);
@@ -22,27 +24,27 @@ int main()
 		//auto jewel4 = gcnew Jewel();
 		//jewel4->setName(L"jewel4");
 		//白色背景
-		auto background = gcnew RectShape(Size(Window::getWidth(), Window::getHeight()));
-		background->setFillColor(Color::White);
+		auto background = gcnew Sprite(L"res/BG03.png");
+
 		background->setPos(Window::getWidth() / 2, Window::getHeight() / 2);
 		scene->addChild(background);
 		//棋盘
 
 		auto chessboard = gcnew Sprite(L"res/chessboard.png");
-		chessboard->setPos(765, 433);
+		chessboard->setPos(665, 333);
 		chessboard->setScale(1.03f);
 		scene->addChild(chessboard);
 
 		//创建宝石
-		vector<vector<Jewel*> >map(8, vector<Jewel*>(8));
+
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				auto jew = new Jewel();
-				jew->pos_row = 500 + 75 * i;
-				jew->pos_col = 170 + 75 * j;
+				jew->pos_row = 400 + 75 * i;
+				jew->pos_col = 70 + 75 * j;
 
 				jew->setScale(0.8f);
-				jew->setPos(500 + 75 * i, 170 + 75 * j);
+				jew->setPos(400 + 75 * i, 70 + 75 * j);
 				map.at(i).push_back(jew);
 
 				jew->setVisible(true);
