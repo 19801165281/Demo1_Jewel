@@ -63,6 +63,7 @@ MatrixNode* GameTask::breakTask(int* pos) {
 		mapcpy(head->map, gl->map);
 		//下移棋子，更新棋盘
 		gl->down();
+		gl->printMap();//test
 		//存储更新后矩阵状态并加入链表
 		MatrixNode* afterRenew = new MatrixNode;
 		//afterRenew->map = gl->map;
@@ -87,6 +88,7 @@ MatrixNode* GameTask::breakTask(int* pos) {
 			q->next = pre;
 			//下移棋子，更新棋盘
 			gl->down();
+			gl->printMap();//test
 			//存储更新后矩阵状态并加入链表
 			MatrixNode* afterRenew = new MatrixNode;
 			//afterRenew->map = gl->map;

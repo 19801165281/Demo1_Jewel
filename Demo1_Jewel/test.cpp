@@ -32,10 +32,11 @@ int main()
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				auto jew = new Jewel(scene->gt->initState()[i][j]);
-				jew->pos_row = 414.0f + 36.25f + 72.5f * (float)(i);
-				jew->pos_col = 30.0f + 36.25f + 72.5f * (float)(j);
+				jew->pos_row = 30.0f + 36.25f + 72.5f * (float)(i);
+				jew->pos_col = 414.0f + 36.25f + 72.5f * (float)(j);
 				jew->setScale(0.8f);
-				jew->setPos(jew->pos_row, jew->pos_col);
+				jew->setPosX(jew->pos_col);
+				jew->setPosY(jew->pos_row);
 				jew->setVisible(true);
 				scene->addChild(jew);
 				GameScene::map[i][j] = jew;

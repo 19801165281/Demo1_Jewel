@@ -33,6 +33,7 @@ public:
     int* hint();//提示（需要加步数）
     bool exchange(int a, int b, int m, int n); //由hint函数调用，来判断相应两子交换后能否产生连子
 
+    void printMap();//测试
 
 private:
     bool game_running; //游戏运行状态，该布尔变量默认为true,当在界面中点击“暂停游戏”按钮时该值为false。true时表示游戏处于运行状态

@@ -1,4 +1,5 @@
 #include "GameLogic.h"
+#include "GameTask.h"
 
 //构造器
 GameLogic::GameLogic()
@@ -89,15 +90,7 @@ void GameLogic::BuildMap()
     }
 
     //打印棋盘，测试
-    for (int n = 0; n < 8; n++)
-    {
-        for (int m = 0; m < 8; m++)
-        {
-            cout << map[n][m] << " ";
-        }
-        cout << endl;
-
-    }
+    this->printMap();
 }
 
 
@@ -199,11 +192,19 @@ bool GameLogic::swap(int a, int b, int m, int n)
 //消子，并返回得分
 int GameLogic::eliminate()
 {
-    int temp[MAPROWNUM][MAPCOLNUM]; //复制一份地图，便于操作
+    int **temp; //复制一份地图，便于操作
+    temp = (int**)malloc(sizeof(int*) * MAPROWNUM);
+    if (!temp) exit(0);
+    for (int i = 0; i < MAPCOLNUM; i++)
+    {
+        temp[i] = (int*)malloc(sizeof(int) * MAPCOLNUM);
+        if (!temp[i]) exit(0);
+    }
     int score = 0; //加分，初始0
     int current = 0; //当前棋子花色
     //将地图复制到temp
-    memcpy(temp, map, sizeof(map));
+    
+    GameTask::mapcpy(temp, map);
 
     //检查同一列的连子
     for (int j = 0; j < MAPCOLNUM; j++)
@@ -248,8 +249,8 @@ int GameLogic::eliminate()
     }
 
     //修改map
-    memcpy(map, temp, sizeof(map));
-
+    GameTask::mapcpy(map, temp);
+    this->printMap();//test
     //返回得分
     return score;
 }
@@ -300,6 +301,20 @@ bool GameLogic::exchange(int a, int b, int m, int n)
     map[m][n] = temp;
 
     return flag;
+}
+
+void GameLogic::printMap()
+{
+    //打印棋盘，测试
+    for (int n = 0; n < 8; n++)
+    {
+        for (int m = 0; m < 8; m++)
+        {
+            cout << map[n][m] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
 }
 
 //提示
