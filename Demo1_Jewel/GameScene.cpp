@@ -4,30 +4,23 @@
 using namespace std;
 
 int GameScene::selected_jewels_numbers = 0;
-Jewel* GameScene::map[8][8];
+vector<vector<Jewel*> >map(8, vector<Jewel*>(8));
 
 GameScene::GameScene()
 {
-	gt = new GameTask(1);//默认为第一关
-}
-
-GameScene::GameScene(int l)
-{
-	gt = new GameTask(l);
 }
 
 void GameScene::onUpdate()
 {
-	if (GameScene::selected_jewels_numbers == 2)
+	if (this->selected_jewels_numbers == 2)
 	{
 
-		int a = 0, b = 0, flag=0;
-		int i, j;
-		Jewel* jew1 = NULL;
-		Jewel* jew2 = NULL;
+		int a = 0, b = 0,flag=0;
+		Jewel* jew1;
+		Jewel* jew2;
 
-		for (i = 0; i < 8; i++) {
-			for (j = 0; j < 8; j++) {
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
 
 				if (map[i][j]->isSelected) {
 					a = i;
@@ -44,21 +37,16 @@ void GameScene::onUpdate()
 
 		flag = 0;
 
-		for (i = 0; i < 8; i++) {
-			for (j = 0; j < 8; j++) {
-				if (i == a && j == b) continue;
+		for (int i = a+1; i < 8; i++) {
+			for (int j = b+1; j < 8; j++) {
+
 				if (map[i][j]->isSelected) {
 					jew2 = map[i][j];
-					flag = 1;
-					break;
 				}
 			}
-			if (flag == 1) break;
 		}
 
-		Jewel::Exchange(jew1, jew2);//交换动画
-		map[i][j] = jew1;
-		map[a][b] = jew2;
+		Jewel::Exchange(jew1, jew2);
 		jew1->isSelected = false;
 		jew2->isSelected = false;
 		init_selected_jewels_numbers();

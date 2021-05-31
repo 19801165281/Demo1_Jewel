@@ -1,4 +1,16 @@
-﻿  test.cpp
-C:\Users\lenovo\Desktop\宝石迷阵\src\Demo1_Jewel\Demo1_Jewel\test.cpp(35,32): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\lenovo\Desktop\宝石迷阵\src\Demo1_Jewel\Demo1_Jewel\test.cpp(36,31): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-  Demo1_Jewel.vcxproj -> C:\Users\lenovo\Desktop\宝石迷阵\src\Demo1_Jewel\Debug\Demo1_Jewel.exe
+﻿  GameScene.cpp
+C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\GameScene.h(21,8): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\GameScene.h(21,8): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\GameScene.h(21,28): error C2238: 意外的标记位于“;”之前
+  Jewel.cpp
+C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\GameScene.h(21,8): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\GameScene.h(21,8): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\GameScene.h(21,28): error C2238: 意外的标记位于“;”之前
+  test.cpp
+C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\GameScene.h(21,8): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\GameScene.h(21,8): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\GameScene.h(21,28): error C2238: 意外的标记位于“;”之前
+C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\test.cpp(47,34): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\test.cpp(47,21): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\test.cpp(48,5): error C2065: “map”: 未声明的标识符
+  正在生成代码...

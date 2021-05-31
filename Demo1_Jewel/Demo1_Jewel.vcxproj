@@ -139,17 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="GameLogic.h" />
     <ClInclude Include="GameScene.h" />
-    <ClInclude Include="GameTask.h" />
     <ClInclude Include="Jewel.h" />
-    <ClInclude Include="MatrixNode.h" />
-    <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="GameScene.cpp" />
-    <ClCompile Include="GameTask.cpp" />
     <ClCompile Include="Jewel.cpp" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>

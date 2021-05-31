@@ -1,10 +1,8 @@
 #include "Jewel.h"
 #include "GameScene.h"
-#define GRID_LENGTH 72.5
+
 Jewel::Jewel()
 {
-	this->pos_col = 0;
-	this->pos_row = 0;
 	isSelected = false;
 	jewel_btn = gcnew Button(gcnew Sprite(L"res\\1_01.png"));
 	jewel_btn->setClickFunc(std::bind(&Jewel::Select, this));
@@ -39,16 +37,16 @@ void Jewel::Select()
 void Jewel::Exchange(Jewel* jewel1, Jewel* jewel2)
 {
 	//创建右移动画
-	auto moveRight = gcnew MoveBy(0.2f, Vector2(GRID_LENGTH, 0));
+	auto moveRight = gcnew MoveBy(0.2f, Vector2(100, 0));
 
 	//创建左移动画
-	auto moveLeft = gcnew MoveBy(0.2f, Vector2(-GRID_LENGTH, 0));
+	auto moveLeft = gcnew MoveBy(0.2f, Vector2(-100, 0));
 
 	//创建上移动画
-	auto moveup = gcnew MoveBy(0.2f, Vector2(0, GRID_LENGTH));
+	auto moveup = gcnew MoveBy(0.2f, Vector2(0, 100));
 
 	//创建下移动画
-	auto movedown = gcnew MoveBy(0.2f, Vector2(0, -GRID_LENGTH));
+	auto movedown = gcnew MoveBy(0.2f, Vector2(0, -100));
 
 
 	//执行动画

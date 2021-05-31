@@ -21,18 +21,6 @@
     <ClInclude Include="GameScene.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="GameLogic.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GameTask.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MatrixNode.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="User.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Jewel.cpp">
@@ -42,12 +30,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="GameScene.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="GameLogic.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="GameTask.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
