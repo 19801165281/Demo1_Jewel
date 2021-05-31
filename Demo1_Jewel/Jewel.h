@@ -8,11 +8,12 @@ class Jewel :
 {
 public:
 	//宝石的位置
-	int pos_row;
-	int pos_col;
+	float pos_row;
+	float pos_col;
 	//宝石的控制按钮
 	Button* jewel_btn;
 	Sprite* border;
+	//std::vector<std::vector<Jewel*>> map;
 	//宝石是否被选中
 	bool isSelected;
 	Jewel();
