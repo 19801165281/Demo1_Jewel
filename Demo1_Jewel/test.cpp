@@ -31,9 +31,9 @@ int main()
 
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				auto jew = new Jewel();
-				jew->pos_row = 414 + 36.25 + 72.5 * (float)(i);
-				jew->pos_col = 30 + 36.25 + 72.5 * (float)(j);
+				auto jew = new Jewel(scene->gt->initState()[i][j]);
+				jew->pos_row = 414.0f + 36.25f + 72.5f * (float)(i);
+				jew->pos_col = 30.0f + 36.25f + 72.5f * (float)(j);
 				jew->setScale(0.8f);
 				jew->setPos(jew->pos_row, jew->pos_col);
 				jew->setVisible(true);

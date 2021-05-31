@@ -1,12 +1,34 @@
 #include "Jewel.h"
 #include "GameScene.h"
+#include <string>
+
 #define GRID_LENGTH 72.5
 Jewel::Jewel()
 {
+	this->pic_num = 0;
 	this->pos_col = 0;
 	this->pos_row = 0;
 	isSelected = false;
 	jewel_btn = gcnew Button(gcnew Sprite(L"res\\1_01.png"));
+	jewel_btn->setClickFunc(std::bind(&Jewel::Select, this));
+	this->addChild(jewel_btn);
+	border = gcnew Sprite(L"res\\onChoosing.png");
+	border->setScale(0.5f);
+	border->setPosX(jewel_btn->getWidth() / 2);
+	border->setPosY(jewel_btn->getHeight() / 2);
+	jewel_btn->addChild(border);
+	border->setVisible(isSelected);
+}
+
+Jewel::Jewel(int pic_num)
+{
+	this->pic_num = pic_num;
+	this->pos_col = 0;
+	this->pos_row = 0;
+	isSelected = false;
+	std::string path = "res\\1_0" + std::to_string(this->pic_num) + ".png";
+	String widename = NarrowToWide(path);
+	jewel_btn = gcnew Button(gcnew Sprite(widename));
 	jewel_btn->setClickFunc(std::bind(&Jewel::Select, this));
 	this->addChild(jewel_btn);
 	border = gcnew Sprite(L"res\\onChoosing.png");

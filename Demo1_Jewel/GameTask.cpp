@@ -43,7 +43,7 @@ int** GameTask::initState() {
 }
 
 //此函数用于根据用户点击信息返回棋盘变化情况
-//参数为保存交换棋子的横纵位置的数组 
+//参数为保存交换棋子的横纵位置的数组
 //eg：pos={1,2,1,3},代表玩家想要交换第一行第二列棋子与第一行第三列棋子
 //返回值为存储用户此次操作后棋盘一系列变化的矩阵链表，用于主界面更新棋盘
 MatrixNode* GameTask::breakTask(int* pos) {
@@ -59,12 +59,14 @@ MatrixNode* GameTask::breakTask(int* pos) {
 		curGrade += curStep;
 		//头结点中存放消子后含0矩阵
 		head = new MatrixNode;
-		head->map = gl->map;
+		//head->map = gl->map;
+		mapcpy(head->map, gl->map);
 		//下移棋子，更新棋盘
 		gl->down();
 		//存储更新后矩阵状态并加入链表
 		MatrixNode* afterRenew = new MatrixNode;
-		afterRenew->map = gl->map;
+		//afterRenew->map = gl->map;
+		mapcpy(afterRenew->map, gl->map);
 		head->next = afterRenew;
 		afterRenew->next = nullptr;
 
@@ -76,7 +78,8 @@ MatrixNode* GameTask::breakTask(int* pos) {
 			curGrade += moreGrade;
 			//结点中存放消子后含0矩阵
 			MatrixNode* pre = new MatrixNode;
-			pre->map = gl->map;
+			//pre->map = gl->map;
+			mapcpy(pre->map, gl->map);
 			MatrixNode* q = head;
 			//找到尾结点
 			while (q->next != nullptr)
@@ -86,7 +89,8 @@ MatrixNode* GameTask::breakTask(int* pos) {
 			gl->down();
 			//存储更新后矩阵状态并加入链表
 			MatrixNode* afterRenew = new MatrixNode;
-			afterRenew->map = gl->map;
+			//afterRenew->map = gl->map;
+			mapcpy(afterRenew->map, gl->map);
 			pre->next = afterRenew;
 			afterRenew->next = nullptr;
 		}
@@ -141,6 +145,20 @@ int GameTask::getScore() {
 int* GameTask::getHint() {
 	int* idea = gl->hint();
 	return idea;
+}
+GameLogic* GameTask::getLogic()
+{
+	return this->gl;
+}
+void GameTask::mapcpy(int** dist, int** src)
+{
+	for (int i = 0; i < MAPROWNUM; i++)
+	{
+		for (int j = 0; j < MAPCOLNUM; j++)
+		{
+			dist[i][j] = src[i][j];
+		}
+	}
 }
 //析构函数
 GameTask::~GameTask() {

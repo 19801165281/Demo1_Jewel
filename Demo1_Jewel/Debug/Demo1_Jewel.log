@@ -1,4 +1,2 @@
-﻿  test.cpp
-C:\Users\lenovo\Desktop\宝石迷阵\src\Demo1_Jewel\Demo1_Jewel\test.cpp(35,32): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\lenovo\Desktop\宝石迷阵\src\Demo1_Jewel\Demo1_Jewel\test.cpp(36,31): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+﻿  MatrixNode.cpp
   Demo1_Jewel.vcxproj -> C:\Users\lenovo\Desktop\宝石迷阵\src\Demo1_Jewel\Debug\Demo1_Jewel.exe

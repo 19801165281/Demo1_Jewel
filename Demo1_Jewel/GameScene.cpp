@@ -20,13 +20,12 @@ void GameScene::onUpdate()
 {
 	if (GameScene::selected_jewels_numbers == 2)
 	{
-
 		int a = 0, b = 0, flag=0;
 		int i, j;
 		Jewel* jew1 = NULL;
 		Jewel* jew2 = NULL;
-
-		for (i = 0; i < 8; i++) {
+		//找到两个被选中的宝石
+		for (i = 0; i < 8; i++) {//第一个宝石
 			for (j = 0; j < 8; j++) {
 
 				if (map[i][j]->isSelected) {
@@ -44,7 +43,7 @@ void GameScene::onUpdate()
 
 		flag = 0;
 
-		for (i = 0; i < 8; i++) {
+		for (i = 0; i < 8; i++) {//第二个宝石
 			for (j = 0; j < 8; j++) {
 				if (i == a && j == b) continue;
 				if (map[i][j]->isSelected) {
@@ -55,10 +54,16 @@ void GameScene::onUpdate()
 			}
 			if (flag == 1) break;
 		}
-
-		Jewel::Exchange(jew1, jew2);//交换动画
-		map[i][j] = jew1;
-		map[a][b] = jew2;
+		int pos[4] = { a, b, i, j };
+		if (this->gt->breakTask(pos) != nullptr)
+		{
+			//动画上的交换
+			Jewel::Exchange(jew1, jew2);//交换动画
+			map[i][j] = jew1;
+			map[a][b] = jew2;
+		}
+		jew1->Select();
+		jew2->Select();
 		jew1->isSelected = false;
 		jew2->isSelected = false;
 		init_selected_jewels_numbers();

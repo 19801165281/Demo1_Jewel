@@ -10,13 +10,15 @@ public:
 	//宝石的位置
 	float pos_row;
 	float pos_col;
+	//宝石的编号
+	int pic_num;
 	//宝石的控制按钮
 	Button* jewel_btn;
 	Sprite* border;
-	//std::vector<std::vector<Jewel*>> map;
 	//宝石是否被选中
 	bool isSelected;
 	Jewel();
+	Jewel(int pic_num);
 	//选择宝石动画
 	void Select();
 	//交换两个宝石的动画
