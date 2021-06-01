@@ -58,7 +58,7 @@ void Jewel::Select()
 	Data::saveBool(L"isSelected", isSelected);
 }
 
-void Jewel::Exchange(Jewel* jewel1, Jewel* jewel2,double delay)
+void Jewel::Exchange(Jewel* jewel1, Jewel* jewel2,double delay,bool ifReturn)
 {
 	//´´½¨ÓÒÒÆ¶¯»­
 	auto moveRight = gcnew MoveBy(0.2f, Vector2(GRID_LENGTH, 0));
@@ -100,8 +100,16 @@ void Jewel::Exchange(Jewel* jewel1, Jewel* jewel2,double delay)
 	auto sequence1 = gcnew Sequence({ delay1->clone(),animation1 });
 	auto sequence2= gcnew Sequence({ delay1->clone(),animation2 });
 
-	jewel1->runAction(sequence1);
-	jewel2->runAction(sequence2);
+	if(!ifReturn)
+	{
+		jewel1->runAction(sequence1->clone());
+		jewel2->runAction(sequence2->clone());
+	}
+	else
+	{
+		jewel1->runAction(gcnew Sequence({ sequence1->clone(), sequence2->clone() }));
+		jewel2->runAction(gcnew Sequence({ sequence2->clone(), sequence1->clone() }));
+	}
 
 	jewel1->border->setVisible(false);
 	jewel2->border->setVisible(false);

@@ -70,18 +70,18 @@ void GameScene::onUpdate(){
 			if (this->gt->breakTask(pos) != nullptr)//如果交换可以产生消子
 			{
 				//动画上的交换
-				Jewel::Exchange(jew1, jew2,1);//交换动画
+				Jewel::Exchange(jew1, jew2,1, false);//交换动画
 				map[i][j] = jew1;
 				map[a][b] = jew2;
 
 
-			}else {//交换如果不能产生消子，播放动画
+			}else {
+				//交换如果不能产生消子，播放动画
 				// 执行顺序动画
 				// 执行顺序动画
 
-				Jewel::Exchange(jew1, jew2,0);//交换动画
-		
-				Jewel::Exchange(jew1, jew2,2);//交换动画
+				Jewel::Exchange(jew1, jew2, 0, true);//交换动画
+				
 			}
 
 		}
