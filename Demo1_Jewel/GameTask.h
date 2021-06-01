@@ -22,5 +22,4 @@ private:
 	GameLogic* gl;//游戏逻辑对象
 	MatrixNode* head = nullptr;//矩阵链表头结点
 
-
 };

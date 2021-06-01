@@ -58,7 +58,7 @@ void Jewel::Select()
 	Data::saveBool(L"isSelected", isSelected);
 }
 
-void Jewel::Exchange(Jewel* jewel1, Jewel* jewel2)
+void Jewel::Exchange(Jewel* jewel1, Jewel* jewel2,double delay)
 {
 	//创建右移动画
 	auto moveRight = gcnew MoveBy(0.2f, Vector2(GRID_LENGTH, 0));
@@ -72,26 +72,36 @@ void Jewel::Exchange(Jewel* jewel1, Jewel* jewel2)
 	//创建下移动画
 	auto movedown = gcnew MoveBy(0.2f, Vector2(0, -GRID_LENGTH));
 
-
+	auto animation1 =  gcnew MoveBy(0.0f, Vector2(0, 0));
+	auto animation2=  gcnew MoveBy(0.0f, Vector2(0, 0));
+	
 	//执行动画
 	if (jewel1->getPosX() > jewel2->getPosX())
 	{
-		jewel1->runAction(moveLeft->clone());
-		jewel2->runAction(moveRight->clone());
+		 animation1=moveLeft->clone();
+		 animation2=moveRight->clone();
 	}
 	else if (jewel1->getPosX() < jewel2->getPosX())
 	{
-		jewel1->runAction(moveRight->clone());
-		jewel2->runAction(moveLeft->clone());
+		 animation1 = moveRight->clone();
+		 animation2 = moveLeft->clone();
 	}
 	else if (jewel1->getPosY() < jewel2->getPosY()){
 
-		jewel1->runAction(moveup->clone());
-	   jewel2->runAction(movedown->clone());
+		 animation1 = moveup->clone();
+		 animation2 = movedown->clone();
     }else{
-		jewel1->runAction(movedown->clone());
-		jewel2->runAction(moveup->clone());
+		 animation1 = movedown->clone();
+		 animation2 = moveup->clone();
+
 	}
+
+	auto delay1 = gcnew Delay(delay);
+	auto sequence1 = gcnew Sequence({ delay1->clone(),animation1 });
+	auto sequence2= gcnew Sequence({ delay1->clone(),animation2 });
+
+	jewel1->runAction(sequence1);
+	jewel2->runAction(sequence2);
 
 	jewel1->border->setVisible(false);
 	jewel2->border->setVisible(false);

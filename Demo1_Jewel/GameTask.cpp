@@ -73,6 +73,7 @@ MatrixNode* GameTask::breakTask(int* pos) {
 
 		//当更新棋盘后出现三个宝石相同，则出现连消情况
 		while (gl->checkmap()) {
+
 			//调用函数返回此次消子得分
 			int moreGrade = gl->eliminate();
 			//更新此关卡当前分数
