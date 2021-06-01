@@ -24,9 +24,9 @@ public:
 	//交换两个宝石的动画
 	void static Exchange(Jewel* jewel1, Jewel* jewel2, double delay, bool ifReturn);
 	//宝石下落的动画
-	void Fall();
+	void static Fall(Jewel* jewel, double delay, int distance);
 	//宝石消失的动画
-	void Break();
+	void static Break(Jewel* jewel,double delay);
 	~Jewel();
 };
 

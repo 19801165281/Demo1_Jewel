@@ -31,7 +31,7 @@ int main()
 
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				auto jew = new Jewel(scene->gt->initState()[i][j]);
+				auto jew = new Jewel(scene->gt->initState()[i][j]);//根据map生成不同图像图片
 				jew->pos_row = 30.0f + 36.25f + 72.5f * (float)(i);
 				jew->pos_col = 414.0f + 36.25f + 72.5f * (float)(j);
 				jew->setScale(0.8f);

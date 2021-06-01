@@ -115,18 +115,23 @@ void Jewel::Exchange(Jewel* jewel1, Jewel* jewel2,double delay,bool ifReturn)
 	jewel2->border->setVisible(false);
 }
 
-void Jewel::Fall()
+void Jewel::Fall(Jewel* jewel, double delay,int distance)
 {
 	//创建一个下落动画
-	auto fallTo = gcnew MoveBy(0.2f, Vector2(0, 80));
-	this->runAction(fallTo);
+	auto flash = gcnew MoveBy(0.0f, Vector2(0, -80.0 * distance));//向上瞬移
+	auto fallTo = gcnew MoveBy(0.2f, Vector2(0, 80.0*distance));//向下掉落
+	auto delay1 = gcnew Delay(delay);
+	auto sequence1 = gcnew Sequence({ flash->clone(),delay1->clone(),fallTo });
+	jewel->runAction(sequence1);
 }
 
-void Jewel::Break()
+void Jewel::Break(Jewel* jewel, double delay)
 {
-	// 创建一个缩放动画，1 秒后缩放到原始大小的 0.5 倍
+	// 创建一个缩放动画，1 秒后消失
 	auto scaleTo = gcnew ScaleTo(0.3f, 0.0f);
-	this->runAction(scaleTo);
+	auto delay1 = gcnew Delay(delay);
+	auto sequence1 = gcnew Sequence({ delay1->clone(),scaleTo });
+	jewel->runAction(sequence1);
 }
 
 Jewel::~Jewel()

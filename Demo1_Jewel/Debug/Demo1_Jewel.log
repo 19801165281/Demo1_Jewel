@@ -1,3 +1,10 @@
-﻿  Jewel.cpp
-C:\Users\lenovo\Desktop\宝石迷阵\src\Demo1_Jewel\Demo1_Jewel\Jewel.cpp(99,28): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-  Demo1_Jewel.vcxproj -> C:\Users\lenovo\Desktop\宝石迷阵\src\Demo1_Jewel\Debug\Demo1_Jewel.exe
+﻿  GameScene.cpp
+C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\GameScene.cpp(128,7): error C2065: “scene”: 未声明的标识符
+  Jewel.cpp
+C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\Jewel.cpp(99,28): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\Jewel.cpp(121,51): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\Jewel.cpp(122,50): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\Jewel.cpp(123,28): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\Jewel.cpp(132,28): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+  test.cpp
+  正在生成代码...
