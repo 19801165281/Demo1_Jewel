@@ -9,7 +9,7 @@ Jewel* GameScene::map[8][8];
 
 GameScene::GameScene()
 {
-	gt = new GameTask(1);//Ä¬ÈÏÎªµÚÒ»¹Ø
+	gt = new GameTask(1);//é»˜è®¤ä¸ºç¬¬ä¸€å…³
 }
 
 GameScene::GameScene(int l)
@@ -19,144 +19,282 @@ GameScene::GameScene(int l)
 
 void GameScene::onUpdate(){
 
-	//if (·ÇÔİÍ£)
-	if (GameScene::selected_jewels_numbers == 2)// Èç¹ûÑ¡ÖĞ2¸öÆå×Ó
-	{
-		int a = 0, b = 0, flag=0;
-		int i, j;
-		Jewel* jew1 = NULL;
-		Jewel* jew2 = NULL;
-	//	Jewel* temp = NULL;
-		//¼Ó²½Êı
+	////if (éæš‚åœ)
+	//if (GameScene::selected_jewels_numbers == 2)// å¦‚æœé€‰ä¸­2ä¸ªæ£‹å­
+	//{
+	//	int a = 0, b = 0, flag=0;
+	//	int i, j;
+	//	Jewel* jew1 = NULL;
+	//	Jewel* jew2 = NULL;
+	////	Jewel* temp = NULL;
+	//	//åŠ æ­¥æ•°
 
-		//step++
+	//	//step++
 
 
-		//ÕÒµ½Á½¸ö±»Ñ¡ÖĞµÄ±¦Ê¯
-		for (i = 0; i < 8; i++) {//µÚÒ»¸ö±¦Ê¯
-			for (j = 0; j < 8; j++) {
+	//	//æ‰¾åˆ°ä¸¤ä¸ªè¢«é€‰ä¸­çš„å®çŸ³
+	//	for (i = 0; i < 8; i++) {//ç¬¬ä¸€ä¸ªå®çŸ³
+	//		for (j = 0; j < 8; j++) {
 
-				if (map[i][j]->isSelected) {
-					a = i;
-					b = j;
-					jew1 = map[i][j];
-					flag = 1;
-					break;
-				}
-			}
-			if (flag == 1) {
+	//			if (map[i][j]->isSelected) {
+	//				a = i;
+	//				b = j;
+	//				jew1 = map[i][j];
+	//				flag = 1;
+	//				break;
+	//			}
+	//		}
+	//		if (flag == 1) {
+	//			break;
+	//		}
+	//	}
+
+	//	flag = 0;
+
+	//	for (i = 0; i < 8; i++) {//ç¬¬äºŒä¸ªå®çŸ³
+	//		for (j = 0; j < 8; j++) {
+	//			if (i == a && j == b) continue;
+	//			if (map[i][j]->isSelected) {
+	//				jew2 = map[i][j];
+	//				flag = 1;
+	//				break;
+	//			}
+	//		}
+	//		if (flag == 1) break;
+	//	}
+
+	//	//è‹¥ä¸¤ä¸ªæ£‹å­ç›¸é‚»
+	//	if (((a == i) && ((b == j + 1) || (b == j - 1)) || ( (b == j) && ((a == i + 1) || (a == i - 1))))){
+
+	//		int pos[4] = { a, b, i, j };
+	//		
+	//		//while (this->gt->breakTask(pos) != nullptr) {
+
+	//		//	int **o=this->gt->breakTask(pos)->map;
+	//		//	//æ‰“å°æ£‹ç›˜ï¼Œæµ‹è¯•
+	//		//	for (int n = 0; n < 8; n++)
+	//		//	{
+	//		//		for (int m = 0; m < 8; m++)
+	//		//		{
+	//		//			cout << o[n][m] << " ";
+	//		//		}
+	//		//		cout << endl;
+	//		//	}
+	//		//	cout << endl;
+	//		//}
+	//		
+	//		//å°è¯•è¯»å–å«0çŸ©é˜µï¼Œè‹¥èƒ½è¯»åˆ°è¯´æ˜äº¤æ¢èƒ½æ¶ˆå­
+	//		MatrixNode* p1 = new MatrixNode;
+	//		p1 = this->gt->breakTask(pos);
+
+	//		if (p1 != nullptr)//å¦‚æœäº¤æ¢å¯ä»¥äº§ç”Ÿæ¶ˆå­
+	//		{
+	//			
+	//			//åŠ¨ç”»ä¸Šçš„äº¤æ¢
+	//			Jewel::Exchange(jew1, jew2, 0, false);//äº¤æ¢åŠ¨ç”»
+	//			map[i][j] = jew1;
+	//			map[a][b] = jew2;
+
+	//			int record[8] = { 0 };//è®°å½•æ¯ä¸€åˆ—æ£‹å­ä¸‹è½çš„æœ€å¤§ä¸‹æ ‡(è¡Œ)ï¼›
+	//			int numOfFall[8] = { 0 };//è®°å½•æ¯ä¸€åˆ—æ£‹å­ä¸‹è½çš„è·ç¦»ï¼›
+
+	//			//å¦‚æœæŸä¸ªä½ç½®æ˜¯0ï¼Œè¯¥ä½ç½®æ’­æ”¾æ¶ˆå¤±åŠ¨ç”»
+	//			for (j = 0; j < 8; j++) {//ä¸»åˆ—éå†
+	//				for (i = 0; i < 8; i++) {
+
+	//					if (p1->map[i][j]==0) {
+	//						Jewel::Break(map[i][j],0.3);//æ’­æ”¾æ¶ˆå¤±åŠ¨ç”»
+	//						
+	//						if (record[j] < i) {
+	//							record[j] = i;//æ›´æ–°å½“å‰åˆ—0å­˜åœ¨çš„çš„æœ€å¤§ä¸‹æ ‡
+	//						}
+	//						numOfFall[j]++;//æ¯ä¸€åˆ— æ¯å¤šä¸€ä¸ª0 ä¸‹è½è·ç¦»+1
+	//					}
+	//				}
+	//			}
+
+	//			//åˆå§‹åŒ–ä¸‹ä¸€ä¸ªçŠ¶æ€çš„æ£‹ç›˜ ï¼ˆè¿™æ®µåˆ·æ–°æ£‹ç›˜ è¿˜æ²¡å†™å®Œï¼‰
+	//			p1 = p1->next;
+
+	//			for (int i = 0; i < 8; i++) {
+	//				for (int j = 0; j < 8; j++) {
+	//					auto jew = new Jewel(p1->map[i][j]);//æ ¹æ®mapç”Ÿæˆä¸åŒå›¾åƒå›¾ç‰‡
+	//					jew->pos_row = 30.0f + 36.25f + 72.5f * (float)(i);
+	//					jew->pos_col = 414.0f + 36.25f + 72.5f * (float)(j);
+	//					jew->setScale(0.8f);
+	//					jew->setPosX(jew->pos_col);
+	//					jew->setPosY(jew->pos_row);
+	//					jew->setVisible(true);
+	//					scene->addChild(jew);
+	//					GameScene::map[i][j] = jew;
+	//				}
+	//			}
+
+	//			//æ’­æ”¾ä¸‹è½åŠ¨ç”»
+	//			for (j = 0; j < 8; j++) {//ä¸»åˆ—éå†
+	//				for (i = 0; i <=record[i]; i++) {
+
+	//					Jewel::Fall(map[i][j],2, numOfFall[j]);
+	//				}
+	//			}
+
+
+	//		}else {
+	//			//äº¤æ¢å¦‚æœä¸èƒ½äº§ç”Ÿæ¶ˆå­ï¼Œæ’­æ”¾åŠ¨ç”»
+	//			// æ‰§è¡Œé¡ºåºåŠ¨ç”»
+	//			// æ‰§è¡Œé¡ºåºåŠ¨ç”»
+
+	//			Jewel::Exchange(jew1, jew2, 0, true);//äº¤æ¢åŠ¨ç”»
+	//			
+	//		}
+
+	//	}
+
+	//	
+	//	jew1->Select();
+	//	jew2->Select();
+	//	jew1->isSelected = false;
+	//	jew2->isSelected = false;
+	//	init_selected_jewels_numbers();
+	//}
+
+//if (éæš‚åœ)
+if (GameScene::selected_jewels_numbers == 2)// å¦‚æœé€‰ä¸­2ä¸ªæ£‹å­
+{
+	int a = 0, b = 0, flag = 0;
+	int i, j;
+	Jewel* jew1 = NULL;
+	Jewel* jew2 = NULL;
+
+	//åŠ æ­¥æ•°
+
+	//step++
+
+
+	//æ‰¾åˆ°ä¸¤ä¸ªè¢«é€‰ä¸­çš„å®çŸ³
+	for (i = 0; i < 8; i++) {//ç¬¬ä¸€ä¸ªå®çŸ³
+		for (j = 0; j < 8; j++) {
+			if (GameScene::map[i][j]->isSelected) {
+				a = i;
+				b = j;
+				jew1 = GameScene::map[i][j];
+				flag = 1;
 				break;
 			}
 		}
-
-		flag = 0;
-
-		for (i = 0; i < 8; i++) {//µÚ¶ş¸ö±¦Ê¯
-			for (j = 0; j < 8; j++) {
-				if (i == a && j == b) continue;
-				if (map[i][j]->isSelected) {
-					jew2 = map[i][j];
-					flag = 1;
-					break;
-				}
-			}
-			if (flag == 1) break;
+		if (flag == 1) {
+			break;
 		}
+	}
 
-		//ÈôÁ½¸öÆå×ÓÏàÁÚ
-		if (((a == i) && ((b == j + 1) || (b == j - 1)) || ( (b == j) && ((a == i + 1) || (a == i - 1))))){
+	flag = 0;
 
-			int pos[4] = { a, b, i, j };
-			
-			//while (this->gt->breakTask(pos) != nullptr) {
+	for (i = 0; i < 8; i++) {//ç¬¬äºŒä¸ªå®çŸ³
+		for (j = 0; j < 8; j++) {
+			if (i == a && j == b) continue;
+			if (GameScene::map[i][j]->isSelected) {
+				jew2 = map[i][j];
+				flag = 1;
+				break;
+			}
+		}
+		if (flag == 1) break;
+	}
 
-			//	int **o=this->gt->breakTask(pos)->map;
-			//	//´òÓ¡ÆåÅÌ£¬²âÊÔ
-			//	for (int n = 0; n < 8; n++)
-			//	{
-			//		for (int m = 0; m < 8; m++)
-			//		{
-			//			cout << o[n][m] << " ";
-			//		}
-			//		cout << endl;
-			//	}
-			//	cout << endl;
-			//}
-			
-			//³¢ÊÔ¶ÁÈ¡º¬0¾ØÕó£¬ÈôÄÜ¶Áµ½ËµÃ÷½»»»ÄÜÏû×Ó
-			MatrixNode* p1 = new MatrixNode;
-			p1 = this->gt->breakTask(pos);
+	//è‹¥ä¸¤ä¸ªæ£‹å­ç›¸é‚»
+	if (((a == i) && ((b == j + 1) || (b == j - 1)) || ((b == j) && ((a == i + 1) || (a == i - 1))))) {
 
-			if (p1 != nullptr)//Èç¹û½»»»¿ÉÒÔ²úÉúÏû×Ó
+		int pos[4] = { a, b, i, j };
+		MatrixNode* StatusSet = this->gt->breakTask(pos);
+		if (StatusSet)//å¦‚æœäº¤æ¢å¯ä»¥äº§ç”Ÿæ¶ˆå­
+		{
+			jew1->isSelected = false;
+			jew2->isSelected = false;
+			//åŠ¨ç”»ä¸Šçš„äº¤æ¢
+			Jewel::Exchange(jew1, jew2, 0, false);//äº¤æ¢åŠ¨ç”»
+			GameScene::map[i][j] = jew1;
+			GameScene::map[a][b] = jew2;
+			//æ‰§è¡ŒçŠ¶æ€é“¾è¡¨ä¸­çš„èŠ‚ç‚¹åŠ¨ç”»
+			MatrixNode* p0 = StatusSet;
+			while (p0)
 			{
-				
-				//¶¯»­ÉÏµÄ½»»»
-				Jewel::Exchange(jew1, jew2, 0, false);//½»»»¶¯»­
-				map[i][j] = jew1;
-				map[a][b] = jew2;
-
-				int record[8] = { 0 };//¼ÇÂ¼Ã¿Ò»ÁĞÆå×ÓÏÂÂäµÄ×î´óÏÂ±ê(ĞĞ)£»
-				int numOfFall[8] = { 0 };//¼ÇÂ¼Ã¿Ò»ÁĞÆå×ÓÏÂÂäµÄ¾àÀë£»
-
-				//Èç¹ûÄ³¸öÎ»ÖÃÊÇ0£¬¸ÃÎ»ÖÃ²¥·ÅÏûÊ§¶¯»­
-				for (j = 0; j < 8; j++) {//Ö÷ÁĞ±éÀú
-					for (i = 0; i < 8; i++) {
-
-						if (p1->map[i][j]==0) {
-							Jewel::Break(map[i][j],0.3);//²¥·ÅÏûÊ§¶¯»­
-							
-							if (record[j] < i) {
-								record[j] = i;//¸üĞÂµ±Ç°ÁĞ0´æÔÚµÄµÄ×î´óÏÂ±ê
-							}
-							numOfFall[j]++;//Ã¿Ò»ÁĞ Ã¿¶àÒ»¸ö0 ÏÂÂä¾àÀë+1
+				//ç»Ÿè®¡æ¯ä¸€åˆ—ä¸‹è½æƒ…å†µ
+				int empty_in_col[MAPCOLNUM];
+				int fall_start_from[MAPCOLNUM];
+				memset(empty_in_col, 0, sizeof(int) * MAPCOLNUM);
+				memset(fall_start_from, 0, sizeof(int) * MAPCOLNUM);
+				//å…ˆæ¶ˆå­
+				for (int j = 0; j < MAPCOLNUM; j++)
+				{
+					for (int i = MAPROWNUM - 1; i >= 0; i--)
+					{
+						if (p0->map[i][j] == 0)
+						{
+							GameScene::map[i][j]->Break();
+							//delete map[i][j];
+							empty_in_col[j]++;
+							fall_start_from[j] = i - 1;
 						}
 					}
 				}
-
-				//³õÊ¼»¯ÏÂÒ»¸ö×´Ì¬µÄÆåÅÌ £¨Õâ¶ÎË¢ĞÂÆåÅÌ »¹Ã»Ğ´Íê£©
-				p1 = p1->next;
-
-				for (int i = 0; i < 8; i++) {
-					for (int j = 0; j < 8; j++) {
-						auto jew = new Jewel(p1->map[i][j]);//¸ù¾İmapÉú³É²»Í¬Í¼ÏñÍ¼Æ¬
-						jew->pos_row = 30.0f + 36.25f + 72.5f * (float)(i);
-						jew->pos_col = 414.0f + 36.25f + 72.5f * (float)(j);
-						jew->setScale(0.8f);
-						jew->setPosX(jew->pos_col);
-						jew->setPosY(jew->pos_row);
-						jew->setVisible(true);
-						scene->addChild(jew);
-						GameScene::map[i][j] = jew;
+				//å†ä¸‹é™
+				p0 = p0->next;
+				for (int j = 0; j < MAPCOLNUM - 1; j++)
+				{
+					if (empty_in_col[j] == 0)
+					{
+						continue;
+					}
+					//å°†åœ¨ç•Œå†…çš„å®çŸ³ä¸‹é™åˆ°å¯¹åº”ä½ç½®
+					if (fall_start_from[j] >= 0)
+					{
+						for (int i = fall_start_from[j]; i >= 0; i--)
+						{
+							GameScene::map[i][j]->Fall(empty_in_col[j]);
+							GameScene::map[i + empty_in_col[j]][j] = GameScene::map[i][j];//ä¸‹è½æ¶ˆå­çº¿ä¹‹ä¸Šçš„ ç”¨æ–°æ£‹ç›˜è¡¥ä¸Š
+						}
+					}
+					//æ–°åˆ›å»ºæ–°ç”Ÿæˆçš„å®çŸ³ï¼Œå®‰æ’åˆ°å¯¹åº”åˆ—ä¸Šæ–¹
+					for (int k = 0; k < empty_in_col[j]; k++)
+					{
+						int jew_num = p0->map[empty_in_col[j] - k - 1][j];
+						Jewel* new_jew = new Jewel(jew_num);
+						new_jew->pos_row = 30.0f + 36.25f + 72.5f * (float)(-1);
+						new_jew->pos_col = 414.0f + 36.25f + 72.5f * (float)(j);
+						new_jew->setPosX(new_jew->pos_col);
+						new_jew->setPosY(new_jew->pos_row);
+						new_jew->setVisible(true);
+						new_jew->setScale(0.8f);
+						this->addChild(new_jew);
+						GameScene::map[empty_in_col[j] - k - 1][j] = new_jew;
+						new_jew->Fall(empty_in_col[j] - k);
 					}
 				}
-
-				//²¥·ÅÏÂÂä¶¯»­
-				for (j = 0; j < 8; j++) {//Ö÷ÁĞ±éÀú
-					for (i = 0; i <=record[i]; i++) {
-
-						Jewel::Fall(map[i][j],2, numOfFall[j]);
-					}
-				}
-
-
-			}else {
-				//½»»»Èç¹û²»ÄÜ²úÉúÏû×Ó£¬²¥·Å¶¯»­
-				// Ö´ĞĞË³Ğò¶¯»­
-				// Ö´ĞĞË³Ğò¶¯»­
-
-				Jewel::Exchange(jew1, jew2, 0, true);//½»»»¶¯»­
-				
+				p0 = p0->next;
 			}
 
 		}
+		else {
+			//äº¤æ¢å¦‚æœä¸èƒ½äº§ç”Ÿæ¶ˆå­ï¼Œæ’­æ”¾åŠ¨ç”»
+			// æ‰§è¡Œé¡ºåºåŠ¨ç”»
+			// æ‰§è¡Œé¡ºåºåŠ¨ç”»
+			Jewel::Exchange(jew1, jew2, 0, true);//äº¤æ¢åŠ¨ç”»
+			jew1->Select();
+			jew2->Select();
+			jew1->isSelected = false;
+			jew2->isSelected = false;
 
-		
-		jew1->Select();
-		jew2->Select();
-		jew1->isSelected = false;
-		jew2->isSelected = false;
-		init_selected_jewels_numbers();
+		}
+
 	}
+
+	/*jew1->Select();
+	jew2->Select();
+	jew1->isSelected = false;
+	jew2->isSelected = false;*/
+	init_selected_jewels_numbers();
+
+}
 }
 
 GameScene::~GameScene()

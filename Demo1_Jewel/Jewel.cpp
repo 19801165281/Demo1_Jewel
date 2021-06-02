@@ -115,23 +115,37 @@ void Jewel::Exchange(Jewel* jewel1, Jewel* jewel2,double delay,bool ifReturn)
 	jewel2->border->setVisible(false);
 }
 
-void Jewel::Fall(Jewel* jewel, double delay,int distance)
+//void Jewel::Fall(Jewel* jewel, double delay,int distance)
+//{
+//	//创建一个下落动画
+//	auto flash = gcnew MoveBy(0.0f, Vector2(0, -80.0 * distance));//向上瞬移
+//	auto fallTo = gcnew MoveBy(0.2f, Vector2(0, 80.0*distance));//向下掉落
+//	auto delay1 = gcnew Delay(delay);
+//	auto sequence1 = gcnew Sequence({ flash->clone(),delay1->clone(),fallTo });
+//	jewel->runAction(sequence1);
+//}
+
+void Jewel::Fall(int fall_grids)
 {
 	//创建一个下落动画
-	auto flash = gcnew MoveBy(0.0f, Vector2(0, -80.0 * distance));//向上瞬移
-	auto fallTo = gcnew MoveBy(0.2f, Vector2(0, 80.0*distance));//向下掉落
-	auto delay1 = gcnew Delay(delay);
-	auto sequence1 = gcnew Sequence({ flash->clone(),delay1->clone(),fallTo });
-	jewel->runAction(sequence1);
+	auto fallTo = gcnew MoveBy(0.2f, Vector2(0, GRID_LENGTH * fall_grids));
+	this->runAction(fallTo);
 }
+//
+//void Jewel::Break(Jewel* jewel, double delay)
+//{
+//	// 创建一个缩放动画，1 秒后消失
+//	auto scaleTo = gcnew ScaleTo(0.3f, 0.0f);
+//	auto delay1 = gcnew Delay(delay);
+//	auto sequence1 = gcnew Sequence({ delay1->clone(),scaleTo });
+//	jewel->runAction(sequence1);
+//}
 
-void Jewel::Break(Jewel* jewel, double delay)
-{
-	// 创建一个缩放动画，1 秒后消失
+void Jewel::Break(){
+
 	auto scaleTo = gcnew ScaleTo(0.3f, 0.0f);
-	auto delay1 = gcnew Delay(delay);
-	auto sequence1 = gcnew Sequence({ delay1->clone(),scaleTo });
-	jewel->runAction(sequence1);
+
+	this->runAction(scaleTo);
 }
 
 Jewel::~Jewel()

@@ -1,10 +1,3 @@
 ﻿  GameScene.cpp
-C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\GameScene.cpp(128,7): error C2065: “scene”: 未声明的标识符
-  Jewel.cpp
-C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\Jewel.cpp(99,28): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\Jewel.cpp(121,51): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\Jewel.cpp(122,50): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\Jewel.cpp(123,28): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\Jewel.cpp(132,28): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-  test.cpp
-  正在生成代码...
+C:\Users\37149\source\repos\Demo1_Jewel\Demo1_Jewel\GameScene.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  Demo1_Jewel.vcxproj -> C:\Users\37149\source\repos\Demo1_Jewel\Debug\Demo1_Jewel.exe
